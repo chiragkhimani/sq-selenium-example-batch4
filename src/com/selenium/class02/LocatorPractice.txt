@@ -1,0 +1,1 @@
+In this class we did practice of locators using Xpath
