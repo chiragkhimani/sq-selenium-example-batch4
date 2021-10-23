@@ -84,6 +84,5 @@ public class SauceDemoHomeWork {
 		System.out.println(confirmationPageDescription.getText());
 
 		driver.close();
-
 	}
 }
