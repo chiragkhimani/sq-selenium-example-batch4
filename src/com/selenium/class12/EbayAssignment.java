@@ -1,6 +1,5 @@
 package com.selenium.class12;
 
-import java.io.Serial;
 import java.time.Duration;
 import java.util.List;
 import java.util.Set;
