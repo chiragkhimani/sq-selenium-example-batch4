@@ -22,6 +22,6 @@ public class ScreenshotExample {
 		driver.get("https://www.saucedemo.com/");
 
 		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile, new File("target\\screenshot.png"));
+		FileUtils.copyFile(scrFile, new File("chirag\\homepage.png"));
 	}
 }
