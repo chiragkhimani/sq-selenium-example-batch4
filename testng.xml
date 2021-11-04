@@ -1,0 +1,22 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Critical Test" verbose="1">
+
+	<test name="All Test">
+
+		<groups>
+			<run>
+				<exclude name="Login" />
+			</run>
+		</groups>
+
+
+
+		<classes>
+			<class name="com.testng.class01.SauceLoginTest" />
+			<class name="com.testng.class01.SauceNavigationTest" />
+		</classes>
+	</test>
+
+
+</suite>

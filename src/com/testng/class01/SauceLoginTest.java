@@ -8,7 +8,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class SauceTestNGDemo {
+public class SauceLoginTest {
 
 	WebDriver driver;
 
@@ -25,7 +25,23 @@ public class SauceTestNGDemo {
 		driver.get("https://www.saucedemo.com/");
 	}
 
-	@Test
+	@Test(groups = { "Regression", "Umed", "Login" })
+	public void verifyUserCannotDoLoginWithInvalidCred() {
+		// Login Page
+		WebElement userNameInput = driver.findElement(By.id("user-name"));
+		WebElement passwordInput = driver.findElement(By.id("password"));
+		WebElement loginBtn = driver.findElement(By.id("login-button"));
+
+		userNameInput.sendKeys("locked_out_user");
+		passwordInput.sendKeys("secret_sauce");
+		loginBtn.click();
+
+		// Home Page
+		WebElement invalidLoginError = driver.findElement(By.xpath("//div[@class='error-message-container error']/h3"));
+		System.out.println(invalidLoginError.isDisplayed());
+	}
+
+	@Test(groups = { "Regression", "Login" })
 	public void verifyUserCanAbleToLogin() {
 		// Login Page
 		WebElement userNameInput = driver.findElement(By.id("user-name"));

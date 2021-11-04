@@ -6,18 +6,18 @@ import org.testng.annotations.Test;
 
 public class TestNGDemo {
 	// Readiness before executing the test
-	@BeforeMethod
+	@BeforeMethod // Annotation
 	public void setUp() {
 		System.out.println("1. Executed before test");
 	}
 
-	@Test
+	@Test // Annotation
 	public void testCase1() {
 		System.out.println("2. Executing Test 1");
 	}
 
 	// Clean up / close everything after execution of test
-	@AfterMethod
+	@AfterMethod // Annotation
 	public void cleanUp() {
 		System.out.println("4. Executed After test");
 	}
@@ -26,7 +26,7 @@ public class TestNGDemo {
 	public void testCase2() {
 		System.out.println("3. Executing Test 2");
 	}
-	
+
 	@Test
 	public void testCase3() {
 		System.out.println("a. Executing Test 3");
