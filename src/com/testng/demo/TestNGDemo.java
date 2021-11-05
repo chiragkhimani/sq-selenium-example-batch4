@@ -1,4 +1,4 @@
-package com.testng.class01;
+package com.testng.demo;
 
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
