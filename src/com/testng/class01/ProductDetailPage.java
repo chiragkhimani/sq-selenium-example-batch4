@@ -1,9 +1,17 @@
 package com.testng.class01;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class ProductDetailPage {
+
+	WebDriver driver;
+
+	public ProductDetailPage(WebDriver driver) {
+		this.driver = driver;
+	}
+
 	public void verifyTitle() {
 		WebElement itemTitle = driver.findElement(By.xpath("//div[contains(@class,'inventory_details_name')]"));
 		System.out.println(itemTitle.getText());

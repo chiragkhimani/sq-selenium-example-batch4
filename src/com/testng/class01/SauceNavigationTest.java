@@ -12,9 +12,6 @@ public class SauceNavigationTest {
 
 	WebDriver driver;
 
-	HomePage homePage = new HomePage();
-	LoginPage loginPage = new LoginPage();
-
 	@BeforeMethod
 	public void setUp() {
 		// Open browser
@@ -32,7 +29,9 @@ public class SauceNavigationTest {
 
 	@Test(groups = { "Smoke", "Chirag", "Navigation" })
 	public void verifyUserCanNavigateToProductDetailPageFromHomePage() {
-		loginPage.doLogin();
+		HomePage homePage = new HomePage(driver);
+		LoginPage loginPage = new LoginPage(driver);
+		loginPage.doLogin("standard_user","secret_sauce");
 		homePage.verifyHomePage();
 		homePage.verifyProductDetailPageNavigation();
 	}

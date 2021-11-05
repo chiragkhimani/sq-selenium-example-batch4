@@ -1,5 +1,7 @@
 package com.testng.class01;
 
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -15,6 +17,8 @@ public class SauceLoginTest {
 		// Open browser
 		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 		driver = new ChromeDriver();
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
 
 		// Maximize
 		driver.manage().window().maximize();
@@ -26,8 +30,8 @@ public class SauceLoginTest {
 	@Test(groups = { "Regression", "Umed", "Login" })
 	public void verifyUserCannotDoLoginWithInvalidCred() {
 		// Login Page
-		LoginPage loginPage = new LoginPage();
-		loginPage.doLogin();
+		LoginPage loginPage = new LoginPage(driver);
+		loginPage.doLogin("testtest","test@123");
 
 		// Login page error
 		loginPage.verifyInvalidLoginError();
@@ -36,11 +40,11 @@ public class SauceLoginTest {
 	@Test(groups = { "Regression", "Login" })
 	public void verifyUserCanAbleToLogin() {
 		// Login Page
-		LoginPage loginPage = new LoginPage();
-		loginPage.doLogin();
+		LoginPage loginPage = new LoginPage(driver);
+		loginPage.doLogin("standard_user","secret_sauce");
 
 		// Verify Home Page
-		HomePage homePage = new HomePage();
+		HomePage homePage = new HomePage(driver);
 		homePage.verifyHomePage();
 	}
 
