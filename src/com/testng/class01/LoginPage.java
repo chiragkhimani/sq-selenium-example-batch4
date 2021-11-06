@@ -1,29 +1,38 @@
 package com.testng.class01;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
+
+	@FindBy(id = "user-name")
+	WebElement userNameInput;
+
+	@FindBy(id = "password")
+	WebElement passwordInput;
+
+	@FindBy(id = "login-button")
+	WebElement loginBtn;
+
+	@FindBy(xpath = "//div[@class='error-message-container error']/h3")
+	WebElement invalidLoginError;
 
 	WebDriver driver;
 
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;
+		PageFactory.initElements(driver, this);
 	}
 
 	public void doLogin(String username, String password) {
-		WebElement userNameInput = driver.findElement(By.id("user-name"));
-		WebElement passwordInput = driver.findElement(By.id("password"));
-		WebElement loginBtn = driver.findElement(By.id("login-button"));
-
 		userNameInput.sendKeys(username);
 		passwordInput.sendKeys(password);
 		loginBtn.click();
 	}
 
 	public void verifyInvalidLoginError() {
-		WebElement invalidLoginError = driver.findElement(By.xpath("//div[@class='error-message-container error']/h3"));
 		System.out.println(invalidLoginError.isDisplayed());
 	}
 

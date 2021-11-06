@@ -1,24 +1,30 @@
 package com.testng.class01;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class ProductDetailPage {
+
+	@FindBy(xpath = "//div[contains(@class,'inventory_details_name')]")
+	WebElement itemTitle;
+
+	@FindBy(className = "inventory_details_price")
+	WebElement itemPrice;
 
 	WebDriver driver;
 
 	public ProductDetailPage(WebDriver driver) {
 		this.driver = driver;
+		PageFactory.initElements(driver, this);
 	}
 
 	public void verifyTitle() {
-		WebElement itemTitle = driver.findElement(By.xpath("//div[contains(@class,'inventory_details_name')]"));
 		System.out.println(itemTitle.getText());
 	}
 
 	public void verifyPrice() {
-		WebElement itemPrice = driver.findElement(By.className("inventory_details_price"));
 		System.out.println(itemPrice.getText());
 	}
 }

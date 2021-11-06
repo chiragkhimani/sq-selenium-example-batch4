@@ -31,7 +31,7 @@ public class SauceNavigationTest {
 	public void verifyUserCanNavigateToProductDetailPageFromHomePage() {
 		HomePage homePage = new HomePage(driver);
 		LoginPage loginPage = new LoginPage(driver);
-		loginPage.doLogin("standard_user","secret_sauce");
+		loginPage.doLogin("standard_user", "secret_sauce");
 		homePage.verifyHomePage();
 		homePage.verifyProductDetailPageNavigation();
 	}
